@@ -1,0 +1,17 @@
+{
+  "version": "0.2.1",
+  "configurations": [
+    {
+      "name": "Backend (FastAPI)",
+      "type": "python",
+      "project": "backend\\run.py",
+      "cwd": "backend"
+    },
+    {
+      "name": "Frontend (Vite)",
+      "type": "default",
+      "project": "analog-finder\\package.json",
+      "args": ["run", "dev"]
+    }
+  ]
+}

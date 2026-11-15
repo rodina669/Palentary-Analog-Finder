@@ -1,0 +1,25 @@
+{
+  "results": [
+    { "rank": 1, "name": "Danakil Depression", "country": "Ethiopia", "lat": 14.24, "lon": 40.30,
+      "similarity": 0.87, "confidence": 0.70,
+      "dimension_scores": { "relief": 0.90, "slope": 0.84, "roughness": 0.80, "temp_mean": 0.88, "temp_range": 0.75 },
+      "risks": ["Gravity 1g vs 0.38g", "Thick atmosphere vs thin CO2"],
+      "differences": ["Higher humidity", "Active volcanism"] },
+    { "rank": 2, "name": "Dasht-e Lut", "country": "Iran", "lat": 30.5, "lon": 59.0,
+      "similarity": 0.81, "confidence": 0.65,
+      "dimension_scores": { "relief": 0.78, "slope": 0.70, "roughness": 0.82, "temp_mean": 0.86, "temp_range": 0.83 },
+      "risks": ["Gravity 1g vs 0.38g"], "differences": ["Wind erosion patterns differ"] },
+    { "rank": 3, "name": "Qattara Depression", "country": "Egypt", "lat": 29.5, "lon": 27.5,
+      "similarity": 0.76, "confidence": 0.72,
+      "dimension_scores": { "relief": 0.74, "slope": 0.66, "roughness": 0.72, "temp_mean": 0.80, "temp_range": 0.78 },
+      "risks": ["No radiation exposure like Mars"], "differences": ["Salt flats"] },
+    { "rank": 4, "name": "Tibesti Mountains", "country": "Chad", "lat": 21.0, "lon": 17.5,
+      "similarity": 0.71, "confidence": 0.55,
+      "dimension_scores": { "relief": 0.82, "slope": 0.79, "roughness": 0.81, "temp_mean": 0.60, "temp_range": 0.64 },
+      "risks": ["Gravity 1g vs 0.38g"], "differences": ["Volcanic rock types"] },
+    { "rank": 5, "name": "Rio Tinto", "country": "Spain", "lat": 37.7, "lon": -6.55,
+      "similarity": 0.66, "confidence": 0.60,
+      "dimension_scores": { "relief": 0.55, "slope": 0.50, "roughness": 0.58, "temp_mean": 0.72, "temp_range": 0.68 },
+      "risks": ["Acidic water has no Mars equivalent"], "differences": ["Biological activity"] }
+  ]
+}

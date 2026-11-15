@@ -1,0 +1,182 @@
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { height: 100%; }
+body { margin: 0; background: #05060f; color: #e8ecf5; font-family: system-ui, sans-serif; overflow: hidden; }
+
+/* ---------- المدارات ---------- */
+#orbit-screen { position: fixed; inset: 0; }
+#orbit-canvas { width: 100%; height: 100%; }
+#orbit-canvas canvas { display: block; }
+.title { position: absolute; top: 24px; left: 0; right: 0; text-align: center; pointer-events: none; }
+.title h1 { margin: 0; font-size: 28px; letter-spacing: 2px; }
+.title p { margin: 6px 0 0; opacity: .7; }
+
+/* ---------- الانتقال ---------- */
+#fade { position: fixed; inset: 0; background: #000; opacity: 0; pointer-events: none; transition: opacity .5s; z-index: 50; }
+#fade.on { opacity: 1; pointer-events: all; }
+
+/* ---------- التحليل ---------- */
+#analysis-screen { height: 100dvh; display: flex; flex-direction: column; min-height: 0; }
+#analysis-screen > header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-bottom: 1px solid #222750;
+  flex: 0 0 auto;
+}
+#analysis-screen > header h3 { margin: 0; font-size: 16px; }
+#back { background: #1a1d33; color: #fff; border: 1px solid #333a66; padding: 6px 12px; border-radius: 8px; cursor: pointer; }
+#back:hover { border-color: #ff6b3d; }
+
+#app {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 28vw);
+  gap: 0;
+}
+
+#globes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  min-width: 0;
+  min-height: 0;
+  padding: 4px 6px 8px;
+}
+
+.col {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  background: #07091a;
+  border: 1px solid #1c2142;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.head { padding: 6px 10px 2px; flex: 0 0 auto; }
+.head h3 { margin: 0; font-size: 14px; letter-spacing: .4px; }
+.globe { flex: 1; min-height: 0; width: 100%; }
+#loading {
+  position: absolute;
+  top: 50%;
+  left: 8px;
+  right: 8px;
+  transform: translateY(-50%);
+  text-align: center;
+  background: #000a;
+  padding: 10px;
+  z-index: 2;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+#side {
+  background: #0b0d1c;
+  border-left: 1px solid #222750;
+  padding: 10px 12px 16px;
+  overflow-y: auto;
+  min-width: 0;
+}
+#side h3 { margin: 10px 0 8px; font-size: 14px; }
+#catalog-wrap {
+  padding: 0 0 10px;
+  border-bottom: 1px solid #222750;
+  background: transparent;
+  max-height: none;
+  overflow: visible;
+}
+#hint { margin: 0 0 8px; opacity: .75; font-size: 12px; }
+#catalog { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+#catalog button {
+  background: #1a1d33;
+  color: #e8ecf5;
+  border: 1px solid #333a66;
+  border-radius: 8px;
+  padding: 5px 8px;
+  cursor: pointer;
+  font-size: 11px;
+}
+#catalog button:hover, #catalog button.sel { border-color: #ffb347; background: #2a2140; }
+
+#list { list-style: none; padding: 0; margin: 0 0 12px; }
+#list li {
+  padding: 8px 10px;
+  border: 1px solid #222750;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 13px;
+}
+#list li:hover, #list li.sel { background: #1a1d33; border-color: #ff6b3d; }
+.radar-wrap { position: relative; height: 180px; }
+#panel h4 { margin: 0 0 4px; font-size: 15px; }
+#panel ul { padding-left: 18px; color: #ffb3a0; }
+#pnote { font-size: 12px; opacity: .8; line-height: 1.4; }
+#pmeta { font-size: 12px; margin: 0 0 8px; opacity: .85; }
+
+/* تابلت: الكرتين جنب بعض، النتائج تحتهم */
+@media (max-width: 980px) {
+  body { overflow: auto; }
+  #analysis-screen { height: auto; min-height: 100dvh; }
+  #app {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(280px, 52vh) auto;
+  }
+  #globes {
+    height: 52vh;
+    min-height: 280px;
+    gap: 6px;
+    padding: 6px;
+  }
+  .globe { min-height: 0; }
+  #side {
+    border-left: none;
+    border-top: 1px solid #222750;
+    max-height: none;
+  }
+  .radar-wrap { height: 160px; }
+}
+
+/* موبايل: المريخ والأرض يفضلوا جنب بعض بحجم مناسب */
+@media (max-width: 640px) {
+  .title h1 { font-size: 20px; }
+  #analysis-screen > header { padding: 6px 8px; gap: 8px; }
+  #analysis-screen > header h3 { font-size: 13px; }
+  #back { padding: 5px 8px; font-size: 12px; }
+  #app { grid-template-rows: minmax(220px, 42vh) auto; }
+  #globes {
+    height: 42vh;
+    min-height: 220px;
+    gap: 4px;
+    padding: 4px;
+  }
+  .head { padding: 4px 8px 0; }
+  .head h3 { font-size: 12px; }
+  #side { padding: 8px 10px 20px; }
+  #catalog button { font-size: 11px; padding: 4px 7px; }
+  .radar-wrap { height: 140px; }
+}
+
+@media (max-width: 420px) {
+  #app { grid-template-rows: minmax(200px, 38vh) auto; }
+  #globes {
+    height: 38vh;
+    min-height: 200px;
+  }
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+  #app {
+    grid-template-columns: minmax(0, 1fr) minmax(200px, 38vw);
+    grid-template-rows: none;
+  }
+  #globes { height: auto; min-height: 0; }
+  #side { border-left: 1px solid #222750; border-top: none; }
+}

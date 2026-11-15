@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Planetary Analog Finder</title>
+</head>
+<body>
+  <!-- الشاشة 1: المدارات -->
+  <section id="orbit-screen">
+    <div id="orbit-canvas"></div>
+    <div class="title">
+      <h1>Planetary Analog Finder</h1>
+      <p>Click <b>Mars</b> or the <b>Moon</b> to begin</p>
+    </div>
+  </section>
+
+  <!-- الشاشة 2: التحليل -->
+  <section id="analysis-screen" hidden>
+    <header>
+      <button id="back">← Back to orbits</button>
+      <h3 id="target-title">Target: Mars</h3>
+    </header>
+
+    <div id="app">
+      <div id="globes">
+        <section class="col">
+          <div class="head"><h3 id="target-name">Mars</h3></div>
+          <div id="target" class="globe"></div>
+        </section>
+        <section class="col">
+          <div class="head"><h3>Earth</h3></div>
+          <div id="earth" class="globe"></div>
+          <div id="loading" hidden>Finding the 5 closest Earth analogues...</div>
+        </section>
+      </div>
+
+      <aside id="side">
+        <div id="catalog-wrap">
+          <p id="hint">Choose a site below, or click the globe</p>
+          <ul id="catalog"></ul>
+        </div>
+        <h3>Top 5 matches</h3>
+        <ul id="list"></ul>
+        <div id="panel" hidden>
+          <h4 id="pname"></h4>
+          <p id="pmeta"></p>
+          <p id="pnote"></p>
+          <div class="radar-wrap"><canvas id="radar"></canvas></div>
+          <h5>Risks</h5><ul id="risks"></ul>
+          <h5>Differences</h5><ul id="diffs"></ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <div id="fade"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
